@@ -1,18 +1,17 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 project(test_runner)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-set(SOURCE_FILES main.cpp src/divisible_test.cpp)
+set(SOURCE_FILES main.cpp src/prjlib_test.cpp)
 
 add_subdirectory(lib/googletest)
-
-include_directories(DIVISIBLE_INCLUDE_DIR)
-include_directories(lib/googletest/googletest/include)
+enable_testing()
 
 add_executable(test_runner ${SOURCE_FILES})
-target_link_libraries(test_runner divisible gtest)
+target_link_libraries(test_runner prjlib gtest gtest_main pthread)
 
-install(TARGETS test_runner DESTINATION bin)
+add_test( test_runner test_runner )
+#install(TARGETS test_runner DESTINATION bin)
 

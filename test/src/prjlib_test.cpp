@@ -1,7 +1,7 @@
 //
 // Created by Konstantin Gredeskoul on 5/16/17.
 //
-#include "divisible/divisible.h"
+#include "prjlib/prjlib.hpp"
 #include "gtest/gtest.h"
 using namespace std;
 
@@ -40,6 +40,6 @@ TEST_F(DivisibleTest, ComputeWithDenominator13) {
 // Tests factorial of 0.
 TEST_F(DivisibleTest, ComputeWithDenominator0) {
     Divisible divisible = Divisible(0);
-    divisible.modulo(123);
+    ASSERT_THROW(divisible.modulo(123), DivisionByZero);
 }
 
