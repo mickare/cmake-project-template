@@ -42,7 +42,9 @@
 
 include/divisible/*
 bin/*
+build/*
 lib/*
+test/lib/*
 test/test_runner
 
 ## Local 
